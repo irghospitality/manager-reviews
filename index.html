@@ -1,0 +1,429 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>IRG Manager Feedback</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=Public+Sans:wght@400;500;600&display=swap">
+<style>
+  :root {
+    --ground: #F6F6F3;
+    --surface: #FFFFFF;
+    --ink: #191E1B;
+    --ink-soft: #5C635D;
+    --line: #DEDFD8;
+    --line-strong: #C6C9C0;
+    --accent: #2C6A57;
+    --accent-ink: #FFFFFF;
+    --accent-soft: #E7EFEA;
+    --danger: #9B3A2C;
+    --shadow: 0 1px 2px rgba(25, 30, 27, .05), 0 8px 24px -16px rgba(25, 30, 27, .28);
+
+    --display: "Newsreader", Georgia, "Times New Roman", serif;
+    --body: "Public Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground: #151815;
+      --surface: #1C211D;
+      --ink: #E9ECE7;
+      --ink-soft: #9BA39C;
+      --line: #2D342F;
+      --line-strong: #3D453F;
+      --accent: #77C0A4;
+      --accent-ink: #0F231B;
+      --accent-soft: #22322B;
+      --danger: #E29483;
+      --shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 8px 24px -16px rgba(0, 0, 0, .7);
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --ground: #151815;
+    --surface: #1C211D;
+    --ink: #E9ECE7;
+    --ink-soft: #9BA39C;
+    --line: #2D342F;
+    --line-strong: #3D453F;
+    --accent: #77C0A4;
+    --accent-ink: #0F231B;
+    --accent-soft: #22322B;
+    --danger: #E29483;
+    --shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 8px 24px -16px rgba(0, 0, 0, .7);
+  }
+
+  * { box-sizing: border-box; }
+
+  html { -webkit-text-size-adjust: 100%; }
+
+  body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--ink);
+    font-family: var(--body);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: 41rem;
+    margin: 0 auto;
+    padding: clamp(1.75rem, 5vw, 4rem) clamp(1.1rem, 4vw, 2rem) 4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+  }
+
+  .eyebrow {
+    margin: 0 0 .6rem;
+    font-size: .72rem;
+    font-weight: 600;
+    letter-spacing: .13em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+
+  h1 {
+    margin: 0;
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: clamp(2rem, 6vw, 2.65rem);
+    line-height: 1.1;
+    letter-spacing: -.015em;
+    text-wrap: balance;
+  }
+
+  .intro {
+    margin: 1rem 0 0;
+    font-size: 1.02rem;
+    color: var(--ink);
+    max-width: 34rem;
+  }
+
+  .intro em {
+    font-style: normal;
+    color: var(--ink-soft);
+  }
+
+  .privacy {
+    border-left: 2px solid var(--accent);
+    background: var(--accent-soft);
+    padding: .85rem 1.1rem;
+    border-radius: 0 4px 4px 0;
+    font-size: .92rem;
+    color: var(--ink);
+  }
+
+  .privacy strong { font-weight: 600; }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    margin: 0;
+  }
+
+  .block {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 1.35rem 1.35rem 1.15rem;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    gap: .75rem;
+  }
+
+  .block--optional {
+    background: transparent;
+    box-shadow: none;
+    border-style: dashed;
+  }
+
+  .block-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+    padding-bottom: .7rem;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .name {
+    margin: 0;
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: 1.4rem;
+    line-height: 1.2;
+    letter-spacing: -.01em;
+  }
+
+  .role {
+    font-size: .74rem;
+    font-weight: 600;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+
+  .hint {
+    margin: 0;
+    font-size: .9rem;
+    color: var(--ink-soft);
+  }
+
+  textarea {
+    width: 100%;
+    min-height: 8.5rem;
+    resize: vertical;
+    font: inherit;
+    color: var(--ink);
+    background: var(--ground);
+    border: 1px solid var(--line-strong);
+    border-radius: 4px;
+    padding: .8rem .9rem;
+    line-height: 1.6;
+    overflow: hidden;
+  }
+
+  .block--optional textarea {
+    min-height: 5.5rem;
+    background: var(--surface);
+  }
+
+  textarea::placeholder { color: var(--ink-soft); opacity: .75; }
+
+  textarea:focus-visible,
+  button:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  .actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: .25rem;
+  }
+
+  button {
+    font: inherit;
+    font-weight: 600;
+    letter-spacing: .01em;
+    color: var(--accent-ink);
+    background: var(--accent);
+    border: 1px solid var(--accent);
+    border-radius: 4px;
+    padding: .72rem 1.6rem;
+    cursor: pointer;
+    transition: opacity .15s ease, transform .15s ease;
+  }
+
+  button:hover:not(:disabled) { opacity: .88; }
+  button:active:not(:disabled) { transform: translateY(1px); }
+  button:disabled { opacity: .6; cursor: default; }
+
+  .status {
+    font-size: .92rem;
+    color: var(--ink-soft);
+  }
+
+  .status[data-tone="error"] { color: var(--danger); font-weight: 500; }
+
+  .done {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-top: 3px solid var(--accent);
+    border-radius: 6px;
+    padding: 2rem 1.5rem 2.15rem;
+    box-shadow: var(--shadow);
+    text-align: center;
+  }
+
+  .done h2 {
+    margin: 0 0 .6rem;
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: 1.65rem;
+    letter-spacing: -.01em;
+  }
+
+  .done p {
+    margin: 0 auto;
+    max-width: 26rem;
+    color: var(--ink-soft);
+  }
+
+  footer {
+    font-size: .84rem;
+    color: var(--ink-soft);
+    border-top: 1px solid var(--line);
+    padding-top: 1.1rem;
+  }
+
+  footer p { margin: 0 0 .35rem; }
+  footer p:last-child { margin-bottom: 0; }
+
+  [hidden] { display: none !important; }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; animation: none !important; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header>
+    <p class="eyebrow">IRG Hospitality &middot; Annual Performance Reviews</p>
+    <h1>Manager Feedback</h1>
+    <p class="intro">
+      Please provide feedback on each manager below. Your comments will not be attributed
+      to you &mdash; we summarize the themes and share that summary with each manager during
+      their upcoming Annual Performance Review. Tell us what each manager does well and what
+      they could do differently. <em>The most helpful responses include some of both.</em>
+    </p>
+  </header>
+
+  <p class="privacy">
+    <strong>This form does not ask for your name, your email address, or anything else that
+    identifies you.</strong> Only Human Resources sees the responses.
+  </p>
+
+  <form id="feedback-form" autocomplete="off" novalidate>
+
+    <section class="block">
+      <div class="block-head">
+        <h2 class="name"><label for="julio">Julio Silva</label></h2>
+        <span class="role">Manager</span>
+      </div>
+      <textarea id="julio" name="Julio Silva"
+        placeholder="What does Julio do well, and what could he do differently?"></textarea>
+    </section>
+
+    <section class="block">
+      <div class="block-head">
+        <h2 class="name"><label for="patrick">Patrick Courson</label></h2>
+        <span class="role">Manager</span>
+      </div>
+      <textarea id="patrick" name="Patrick Courson"
+        placeholder="What does Patrick do well, and what could he do differently?"></textarea>
+    </section>
+
+    <section class="block block--optional">
+      <div class="block-head">
+        <h2 class="name"><label for="other">Anything else you'd like me to know?</label></h2>
+        <span class="role">Optional</span>
+      </div>
+      <textarea id="other" name="Anything else"
+        placeholder="Anything about the team or the workplace that would be useful for HR to hear."></textarea>
+    </section>
+
+    <input type="text" id="gotcha" name="_gotcha" tabindex="-1" autocomplete="off"
+      aria-hidden="true" hidden>
+
+    <div class="actions">
+      <button type="submit" id="submit-btn">Submit feedback</button>
+      <span class="status" id="status" role="status" aria-live="polite"></span>
+    </div>
+
+  </form>
+
+  <div class="done" id="done" hidden>
+    <h2>Thank you.</h2>
+    <p>
+      Your feedback has been received. It goes into a summary of themes that is shared with
+      each manager during their review &mdash; your individual response is not shared.
+    </p>
+  </div>
+
+  <footer>
+    <p>Questions about this survey? Reach out to Human Resources directly.</p>
+    <p>Please submit your feedback before your manager&rsquo;s scheduled review.</p>
+  </footer>
+
+</div>
+
+<script>
+  /* Responses post to this Formspree form and land in that dashboard. */
+  var ENDPOINT = "https://formspree.io/f/xljenzjk";
+
+  var form = document.getElementById("feedback-form");
+  var donePanel = document.getElementById("done");
+  var statusEl = document.getElementById("status");
+  var button = document.getElementById("submit-btn");
+  var boxes = Array.prototype.slice.call(form.querySelectorAll("textarea"));
+
+  // Grow each box as someone types, so long answers stay visible.
+  function autosize(el) {
+    el.style.height = "auto";
+    el.style.height = Math.max(el.scrollHeight, parseFloat(getComputedStyle(el).minHeight)) + "px";
+  }
+  boxes.forEach(function (el) {
+    el.addEventListener("input", function () {
+      autosize(el);
+      setStatus("");
+    });
+  });
+
+  function setStatus(message, tone) {
+    statusEl.textContent = message;
+    if (tone) { statusEl.setAttribute("data-tone", tone); }
+    else { statusEl.removeAttribute("data-tone"); }
+  }
+
+  form.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    var payload = { _subject: "Manager feedback (anonymous)" };
+    var hasContent = false;
+    boxes.forEach(function (el) {
+      var value = el.value.trim();
+      payload[el.name] = value;
+      if (value) { hasContent = true; }
+    });
+
+    // Spam trap: humans never see this field, bots fill it in.
+    // Formspree silently discards any submission where it isn't empty.
+    payload._gotcha = document.getElementById("gotcha").value;
+
+    if (!hasContent) {
+      setStatus("Add a comment for at least one manager before submitting.", "error");
+      boxes[0].focus();
+      return;
+    }
+
+    if (ENDPOINT.indexOf("http") !== 0) {
+      setStatus("This form is not connected yet. Add your form endpoint in index.html.", "error");
+      return;
+    }
+
+    button.disabled = true;
+    setStatus("Sending…");
+
+    fetch(ENDPOINT, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "Accept": "application/json" },
+      body: JSON.stringify(payload)
+    })
+      .then(function (response) {
+        if (!response.ok) { throw new Error("Request failed"); }
+        form.hidden = true;
+        donePanel.hidden = false;
+        donePanel.scrollIntoView({ behavior: "smooth", block: "center" });
+      })
+      .catch(function () {
+        button.disabled = false;
+        setStatus("That didn't send. Check your connection and try once more.", "error");
+      });
+  });
+</script>
+</body>
+</html>
