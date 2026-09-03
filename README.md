@@ -47,7 +47,6 @@ Everything is in `index.html` and readable without knowing HTML:
 - **Adding a third manager** — copy one of the `<section class="block">` blocks, paste it
   below, and change the name, the `id`, and the `for=` that points at it (they must match).
 - **Intro text** — the paragraph with `class="intro"`.
-- **Deadline** — the last line of the footer.
 
 ## Notes on anonymity
 
