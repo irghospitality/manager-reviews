@@ -124,7 +124,7 @@
   form {
     display: flex;
     flex-direction: column;
-    gap: 1.25rem;
+    gap: 1rem;
     margin: 0;
   }
 
@@ -132,17 +132,18 @@
     background: var(--surface);
     border: 1px solid var(--line);
     border-radius: 6px;
-    padding: 1.35rem 1.35rem 1.15rem;
+    padding: 1.2rem 1.25rem 1.05rem;
     box-shadow: var(--shadow);
     display: flex;
     flex-direction: column;
-    gap: .75rem;
+    gap: .7rem;
   }
 
   .block--optional {
     background: transparent;
     box-shadow: none;
     border-style: dashed;
+    margin-top: .5rem;
   }
 
   .block-head {
@@ -151,7 +152,7 @@
     justify-content: space-between;
     gap: 1rem;
     flex-wrap: wrap;
-    padding-bottom: .7rem;
+    padding-bottom: .6rem;
     border-bottom: 1px solid var(--line);
   }
 
@@ -159,7 +160,7 @@
     margin: 0;
     font-family: var(--display);
     font-weight: 500;
-    font-size: 1.4rem;
+    font-size: 1.35rem;
     line-height: 1.2;
     letter-spacing: -.01em;
   }
@@ -172,15 +173,9 @@
     color: var(--ink-soft);
   }
 
-  .hint {
-    margin: 0;
-    font-size: .9rem;
-    color: var(--ink-soft);
-  }
-
   textarea {
     width: 100%;
-    min-height: 8.5rem;
+    min-height: 6.5rem;
     resize: vertical;
     font: inherit;
     color: var(--ink);
@@ -210,7 +205,7 @@
     align-items: center;
     gap: 1rem;
     flex-wrap: wrap;
-    margin-top: .25rem;
+    margin-top: .5rem;
   }
 
   button {
@@ -275,10 +270,11 @@
     <p class="eyebrow">IRG Hospitality &middot; Annual Performance Reviews</p>
     <h1>Manager Feedback</h1>
     <p class="intro">
-      Please provide feedback on each manager below. Your comments will not be attributed
-      to you &mdash; we summarize the themes and share that summary with each manager during
-      their upcoming Annual Performance Review. Tell us what each manager does well and what
-      they could do differently. <em>The most helpful responses include some of both.</em>
+      Please provide feedback on one or all of the managers below &mdash; just the ones you
+      work with. Your comments will not be attributed to you; we summarize the themes and
+      share that summary with each manager during their upcoming Annual Performance Review.
+      Tell us what each manager does well and what they could do differently.
+      <em>The most helpful responses include some of both.</em>
     </p>
   </header>
 
@@ -292,20 +288,65 @@
 
     <section class="block">
       <div class="block-head">
-        <h2 class="name"><label for="julio">Julio Silva</label></h2>
+        <h2 class="name"><label for="bilodeau">Blake Bilodeau</label></h2>
         <span class="role">Manager</span>
       </div>
-      <textarea id="julio" name="Julio Silva"
-        placeholder="What does Julio do well, and what could he do differently?"></textarea>
+      <textarea id="bilodeau" name="Blake Bilodeau"
+        placeholder="What does Blake do well, and what could they do differently?"></textarea>
     </section>
 
     <section class="block">
       <div class="block-head">
-        <h2 class="name"><label for="patrick">Patrick Courson</label></h2>
+        <h2 class="name"><label for="calderon">Mateo Calderon</label></h2>
         <span class="role">Manager</span>
       </div>
-      <textarea id="patrick" name="Patrick Courson"
-        placeholder="What does Patrick do well, and what could he do differently?"></textarea>
+      <textarea id="calderon" name="Mateo Calderon"
+        placeholder="What does Mateo do well, and what could they do differently?"></textarea>
+    </section>
+
+    <section class="block">
+      <div class="block-head">
+        <h2 class="name"><label for="diaz">Cristian Diaz</label></h2>
+        <span class="role">Manager</span>
+      </div>
+      <textarea id="diaz" name="Cristian Diaz"
+        placeholder="What does Cristian do well, and what could they do differently?"></textarea>
+    </section>
+
+    <section class="block">
+      <div class="block-head">
+        <h2 class="name"><label for="kok">Kevin Kok</label></h2>
+        <span class="role">Manager</span>
+      </div>
+      <textarea id="kok" name="Kevin Kok"
+        placeholder="What does Kevin do well, and what could they do differently?"></textarea>
+    </section>
+
+    <section class="block">
+      <div class="block-head">
+        <h2 class="name"><label for="ramos">Mark Ramos</label></h2>
+        <span class="role">Manager</span>
+      </div>
+      <textarea id="ramos" name="Mark Ramos"
+        placeholder="What does Mark do well, and what could they do differently?"></textarea>
+    </section>
+
+    <section class="block">
+      <div class="block-head">
+        <h2 class="name"><label for="riojas">James Riojas</label></h2>
+        <span class="role">Manager</span>
+      </div>
+      <textarea id="riojas" name="James Riojas"
+        placeholder="What does James do well, and what could they do differently?"></textarea>
+    </section>
+
+    <section class="block">
+      <div class="block-head">
+        <h2 class="name"><label for="silva">Julio Silva</label></h2>
+        <span class="role">Manager</span>
+      </div>
+      <textarea id="silva" name="Julio Silva"
+        placeholder="What does Julio do well, and what could they do differently?"></textarea>
     </section>
 
     <section class="block block--optional">
@@ -380,11 +421,6 @@
     if (!hasContent) {
       setStatus("Add a comment for at least one manager before submitting.", "error");
       boxes[0].focus();
-      return;
-    }
-
-    if (ENDPOINT.indexOf("http") !== 0) {
-      setStatus("This form is not connected yet. Add your form endpoint in index.html.", "error");
       return;
     }
 

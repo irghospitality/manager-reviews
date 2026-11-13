@@ -4,6 +4,10 @@ An anonymous staff feedback form for annual manager performance reviews. One pag
 build step, no dependencies. Staff open it on their phone, write, and submit — nothing
 to install and no account to create.
 
+Current managers on the form, listed alphabetically by last name:
+Blake Bilodeau, Mateo Calderon, Cristian Diaz, Kevin Kok, Mark Ramos, James Riojas,
+Julio Silva.
+
 ## Setup
 
 ### 1. Formspree — already connected
@@ -18,7 +22,8 @@ Two settings to check in Formspree before going live:
   this one.
 - Confirm the notification email is the address you actually want these going to.
 
-The free tier allows 50 submissions per month, which is plenty for one review cycle.
+The free tier allows 50 submissions per month. With seven managers on one form, each
+staff member still counts as a single submission.
 
 ### 2. Publish it
 
@@ -39,21 +44,26 @@ two weeks and mention it in a pre-shift meeting once or twice.
 
 ## Editing the form
 
-Everything is in `index.html` and readable without knowing HTML:
+Everything is in `index.html` and readable without knowing HTML.
 
-- **Manager names** — search for `Julio Silva` and `Patrick Courson` and replace them.
-  Each appears twice: once in the heading, once in the `name=` attribute that labels the
-  response.
-- **Adding a third manager** — copy one of the `<section class="block">` blocks, paste it
-  below, and change the name, the `id`, and the `for=` that points at it (they must match).
-- **Intro text** — the paragraph with `class="intro"`.
+**To rename a manager**, search for their full name. It appears three times in their
+block — the `for=`, the heading text, and the `name=` that labels the response in
+Formspree — plus their first name in the placeholder. Change all of them.
+
+**To remove a manager**, delete their whole `<section class="block">` … `</section>` block.
+
+**To add one**, copy an existing block, paste it in, and change the name, the `id`, and the
+`for=` that points at it. The `id` and the `for=` must match each other, and should be
+something short and unique like the person's last name.
+
+**Intro text** is the paragraph with `class="intro"`.
 
 ## Notes on anonymity
 
 The form collects no name, email, or identifying field, and the page loads no analytics or
 tracking. Two things are still worth knowing:
 
-- Form services log basic delivery metadata (such as IP address) for spam filtering. Nobody
+- Formspree logs basic delivery metadata (such as IP address) for spam filtering. Nobody
   at IRG sees it, but "anonymous" here means *not attributed*, not technically untraceable.
   The page's wording reflects that on purpose.
 - With a small team, a specific story can identify its author no matter what the form
@@ -61,7 +71,10 @@ tracking. Two things are still worth knowing:
 
 ## Reading the responses
 
-Wait until you have at least four responses per manager before summarizing anything at that
-level of detail — below that, a manager can usually work out who said what. Group comments
-into recurring themes, note where several people independently said the same thing, and
-bring the themes into the review conversation rather than the raw text.
+Blank boxes come through empty, so you can see at a glance which managers each person
+chose to comment on.
+
+Wait until you have at least four responses about a given manager before summarizing
+anything at a detailed level — below that, they can usually work out who said what. Group
+comments into recurring themes, note where several people independently said the same
+thing, and bring the themes into the review conversation rather than the raw text.
